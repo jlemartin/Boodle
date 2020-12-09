@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Boodle.Models
 {
-    public class List
+    public class BoxList
     {
-        public List()
+        public BoxList()
         {
         }
 

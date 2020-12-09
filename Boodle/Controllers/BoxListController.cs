@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Boodle.Controllers
 {
-    public class ListController : Controller
+    public class BoxListController : Controller
     {
-        private readonly IListRepository repo;
+        private readonly IBoxListRepository repo;
 
-        public ListController(IListRepository repo)
+        public BoxListController(IBoxListRepository repo)
         {
             this.repo = repo;
         }
@@ -21,9 +21,18 @@ namespace Boodle.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var lists = repo.GetAllLists();
+            var boxlists = repo.GetAllLists();
 
-            return View(lists);
+            return View(boxlists);
         }
+
+        // Viewing an individual BoxList
+        public IActionResult ViewBoxList(int id)
+        {
+            var boxlist = repo.GetBoxList(id);
+
+            return View(boxlist);
+        }
+
     }
 }

@@ -33,7 +33,7 @@ namespace Boodle
                 return conn;
             });
 
-            services.AddTransient<IListRepository, ListRepository>();
+            services.AddTransient<IBoxListRepository, BoxListRepository>();
 
             services.AddControllersWithViews();
         }

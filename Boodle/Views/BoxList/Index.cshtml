@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BoxList>
+
+<h2>Box Lists</h2>
+<table class="table">
+    <tr>
+        <th>ListsID</th>
+        <th>Name</th>
+        <th>Number of Boxes</th>
+        <th>Shipped?</th>
+    </tr>
+
+    @foreach (var boxlist in Model)
+    {
+        <tr>
+            <td><a href=/BoxList/ViewBoxList/@boxlist.ListsID>@boxlist.ListsID</a></td>
+            <td>@boxlist.Name</td>
+            <td>@boxlist.BoxNumber</td>
+            <td>@boxlist.Shipped</td>
+        </tr>
+
+    }
+</table>
+
