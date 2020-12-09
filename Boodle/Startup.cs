@@ -35,6 +35,8 @@ namespace Boodle
 
             services.AddTransient<IBoxListRepository, BoxListRepository>();
 
+            services.AddTransient<IBoodlerRepository, BoodlerRepository>();
+
             services.AddControllersWithViews();
         }
 

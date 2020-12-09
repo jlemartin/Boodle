@@ -16,14 +16,35 @@ namespace Boodle.Models
 
         public IEnumerable<BoxList> GetAllLists()
         {
-            return _conn.Query<BoxList>("SELECT * FROM Lists;");
+            var boxLists = _conn.Query<BoxList>("SELECT * FROM Lists;");
+
+            foreach (var list in boxLists)
+            {
+                list.BoxesFilled = GetFilledBoxCount(list.ListsID);
+                list.BoxesAvailable = list.BoxNumber - list.BoxesFilled;
+            }
+
+            return boxLists;
         }
 
         public BoxList GetBoxList(int id)
         {
-            return _conn.QuerySingle<BoxList>("SELECT * FROM Lists WHERE ListsID = @id",
+            var aBoxList = _conn.QuerySingle<BoxList>("SELECT * FROM Lists WHERE ListsID = @id",
                 new { id = id });
 
+            aBoxList.BoxesFilled = GetFilledBoxCount(id);
+            aBoxList.BoxesAvailable = aBoxList.BoxNumber - aBoxList.BoxesFilled;
+
+            return aBoxList;
+        }
+
+        public int GetFilledBoxCount(int id)
+        {
+            var boxCount = _conn.QuerySingle<int>("SELECT COUNT(SignupsID) FROM Signups AS S " +
+                "INNER JOIN Lists AS L ON S.ListsID = L.ListsID WHERE L.ListsID = @id",
+                new { id = id });
+
+            return boxCount;
         }
     }
 }

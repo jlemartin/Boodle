@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Boodler>
+
+<h2>Boodlers</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Middle</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Account Created</th>
+    </tr>
+
+    @foreach (var boodler in Model)
+    {
+    <tr>
+        <td><a href=/Boodler/ViewBoodler/@boodler.UsersID>@boodler.UsersID</a></td>
+        <td>@boodler.FirstName</td>
+        <td>@boodler.MiddleName</td>
+        <td>@boodler.LastName</td>
+        <td>@boodler.EmailAddress</td>
+        <td>@boodler.CreationDate</td>
+    </tr>
+
+    }
+</table>
+

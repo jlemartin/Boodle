@@ -5,18 +5,22 @@
     <tr>
         <th>ListsID</th>
         <th>Name</th>
-        <th>Number of Boxes</th>
+        <th>Total Boxes</th>
+        <th>Boxes Filled</th>
+        <th>Boxes Available</th>
         <th>Shipped?</th>
     </tr>
 
     @foreach (var boxlist in Model)
     {
-        <tr>
-            <td><a href=/BoxList/ViewBoxList/@boxlist.ListsID>@boxlist.ListsID</a></td>
-            <td>@boxlist.Name</td>
-            <td>@boxlist.BoxNumber</td>
-            <td>@boxlist.Shipped</td>
-        </tr>
+    <tr>
+        <td><a href=/BoxList/ViewBoxList/@boxlist.ListsID>@boxlist.ListsID</a></td>
+        <td>@boxlist.Name</td>
+        <td>@boxlist.BoxNumber</td>
+        <td>@boxlist.BoxesFilled</td>
+        <td>@boxlist.BoxesAvailable</td>
+        <td>@boxlist.Shipped</td>
+    </tr>
 
     }
 </table>
