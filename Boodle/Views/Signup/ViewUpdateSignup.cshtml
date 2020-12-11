@@ -1,0 +1,26 @@
+﻿@model Signup
+
+<h2>Update this box - with Ship Date</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>List Name</th>
+        <th>Boodler</th>
+    </tr>
+
+    <tr>
+        <td>@Model.SignupsID</td>
+        <td>@Model.BoxListName</td>
+        <td>@Model.FullName</td>
+    </tr>
+
+</table>
+
+@using (Html.BeginForm("UpdateShipDate", "Signup", "Post"))
+{
+    <input asp-for="SignupsID" type="hidden" value="@Model.SignupsID" />
+    <label asp-for="ShipDate" class="control-label">Date Shipped</label>
+    <input type="text" name="ShipDate" class="form-control" value="@DateTime.Now" />
+    <input type="submit" value="Add Date Shipped" class="btn btn-primary" />
+
+}

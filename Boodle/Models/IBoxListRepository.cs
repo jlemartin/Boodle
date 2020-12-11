@@ -8,7 +8,9 @@ namespace Boodle.Models
         public IEnumerable<BoxList> GetAllLists();
         public BoxList GetBoxList(int id);
         public IEnumerable<Boodler> GetAllBoodlers();
-
+        public int GetFilledBoxCount(int id);
+        public int GetShippedBoxCount(int id);
+        public void UpdateListShipped(int id);
 
     }
 }

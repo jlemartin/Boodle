@@ -15,9 +15,11 @@ namespace Boodle.Models
         public int BoxesFilled { get; set; }
         public int BoxesAvailable { get; set; }
         public int Shipped { get; set; }
+        public int BoxesShipped { get; set; }
         public int ContactID { get; set; }
         public IEnumerable<Boodler> Boodlers { get; set; }
         public string SignupDate { get; set; }
+        public string ShippedText { get; set; }
 
     }
 }

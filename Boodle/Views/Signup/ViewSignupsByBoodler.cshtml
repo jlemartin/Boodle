@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Signup>
+
+<h2>Box Signups by Boodler</h2>
+<p>
+    When you have shipped each box, click the <strong>Box ID</strong> to reach the update page.
+</p>
+<table class="table">
+    <tr>
+        <th>Box ID</th>
+        <th>List Name</th>
+        <th>Boodler</th>
+        <th>Creation Date</th>
+        <th>Ship Date</th>
+    </tr>
+
+    @foreach (var signup in Model)
+    {
+        <tr>
+            <td><a href=/Signup/ViewUpdateSignup/@signup.SignupsID>@signup.SignupsID</a></td>
+            <td>@signup.BoxListName</td>
+            <td>@signup.FullName</td>
+            <td>@signup.Creation</td>
+            <td>@signup.ShipDate</td>
+        </tr>
+
+    }
+</table>
+

@@ -33,6 +33,13 @@ namespace Boodle.Controllers
             return View(signup);
         }
 
+        public IActionResult ViewUpdateSignup(int id)
+        {
+            var signup = repo.GetSignup(id);
+
+            return View(signup);
+        }
+
         public IActionResult MakeBoxListSignup(int UsersID, int ListsID, string SignupDate, int quantity)
         {
             repo.MakeBoxListSignup(UsersID, ListsID, SignupDate, quantity);
@@ -40,11 +47,25 @@ namespace Boodle.Controllers
             return RedirectToAction("Index", "BoxList");
         }
 
+        public IActionResult UpdateShipDate(int SignupsID, string ShipDate)
+        {
+            repo.UpdateShipDate(SignupsID, ShipDate);
+
+            return RedirectToAction("Index", "Boodler");
+        }
+
         public IActionResult ViewSignupsByBoxList(int id)
         {
             var boxListSignups = repo.GetSignupsByList(id);
 
             return View(boxListSignups);
+        }
+
+        public IActionResult ViewSignupsByBoodler(int id)
+        {
+            var boodlerSignups = repo.GetSignupsByBoodler(id);
+
+            return View(boodlerSignups);
         }
     }
 }

@@ -8,7 +8,8 @@
         <th>Total Boxes</th>
         <th>Boxes Filled</th>
         <th>Boxes Available</th>
-        <th>Shipped?</th>
+        <th>Boxes Shipped</th>
+        <th>All Shipped?</th>
     </tr>
 
     @foreach (var boxlist in Model)
@@ -19,7 +20,8 @@
         <td>@boxlist.BoxNumber</td>
         <td>@boxlist.BoxesFilled</td>
         <td>@boxlist.BoxesAvailable</td>
-        <td>@boxlist.Shipped</td>
+        <td>@boxlist.BoxesShipped</td>
+        <td>@boxlist.ShippedText</td>
     </tr>
 
     }

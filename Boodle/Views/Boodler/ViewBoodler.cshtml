@@ -9,11 +9,15 @@
         <th>Account Created</th>
     </tr>
 
-        <tr>
-            <td>@Model.UsersID</td>
-            <td>@Model.FullName</td>
-            <td>@Model.EmailAddress</td>
-            <td>@Model.CreationDate</td>
-        </tr>
+    <tr>
+        <td>@Model.UsersID</td>
+        <td>@Model.FullName</td>
+        <td>@Model.EmailAddress</td>
+        <td>@Model.CreationDate</td>
+    </tr>
 </table>
 
+<div style="display:block">
+    <a href="/Signup/ViewSignupsByBoodler/@Model.UsersID">See Signups by this Boodler</a>
+</div>
+<p></p>
