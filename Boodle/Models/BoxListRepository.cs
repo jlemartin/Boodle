@@ -14,6 +14,11 @@ namespace Boodle.Models
             _conn = conn;
         }
 
+        public IEnumerable<Boodler> GetAllBoodlers()
+        {
+            return _conn.Query<Boodler>("SELECT * FROM Users;");
+        }
+
         public IEnumerable<BoxList> GetAllLists()
         {
             var boxLists = _conn.Query<BoxList>("SELECT * FROM Lists;");
@@ -34,6 +39,8 @@ namespace Boodle.Models
 
             aBoxList.BoxesFilled = GetFilledBoxCount(id);
             aBoxList.BoxesAvailable = aBoxList.BoxNumber - aBoxList.BoxesFilled;
+            var boodlersList = GetAllBoodlers();
+            aBoxList.Boodlers = boodlersList;
 
             return aBoxList;
         }
@@ -46,5 +53,6 @@ namespace Boodle.Models
 
             return boxCount;
         }
+
     }
 }

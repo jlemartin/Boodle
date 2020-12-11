@@ -14,5 +14,6 @@
   <ItemGroup>
     <Folder Include="Views\BoxList\" />
     <Folder Include="Views\Boodler\" />
+    <Folder Include="Views\Signup\" />
   </ItemGroup>
 </Project>

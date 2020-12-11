@@ -37,6 +37,8 @@ namespace Boodle
 
             services.AddTransient<IBoodlerRepository, BoodlerRepository>();
 
+            services.AddTransient<ISignupRepository, SignupRepository>();
+
             services.AddControllersWithViews();
         }
 

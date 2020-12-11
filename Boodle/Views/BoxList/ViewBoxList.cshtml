@@ -22,3 +22,34 @@
 
 </table>
 
+<div style="display:block">
+    <a href="/Signup/ViewSignupsByBoxList/@Model.ListsID">See Signups for this Box List</a>
+</div>
+<p></p>
+
+<h4>Signup for boxes on this list:</h4>
+
+@using (Html.BeginForm("MakeBoxListSignup", "Signup", "Post"))
+{
+    <input asp-for="ListsID" type="hidden" value="@Model.ListsID" />
+    <input asp-for="SignupDate" type="hidden" value="@DateTime.Now" />
+    <div class="form-group">
+        <label for="">Select the Boodler</label>
+        <select class="form-control" name="UsersID" value="">
+            @foreach (var boodler in Model.Boodlers)
+            {
+                <option value="@boodler.UsersID">@boodler.UsersID @boodler.FullName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="">How many boxes?</label>
+        <select class="form-control" name="quantity" value="">
+            @for (int i = 1; i <= Model.BoxesAvailable; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Signup for Boxes" class="btn btn-primary" />
+}

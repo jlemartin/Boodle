@@ -7,5 +7,8 @@ namespace Boodle.Models
     {
         public IEnumerable<BoxList> GetAllLists();
         public BoxList GetBoxList(int id);
+        public IEnumerable<Boodler> GetAllBoodlers();
+
+
     }
 }
