@@ -76,6 +76,8 @@ namespace Boodle.Models
                 aBoxList.ShippedText = "Not yet";
             }
 
+            aBoxList.ContactName = GetListContactName(id);
+
             return aBoxList;
         }
 
@@ -86,6 +88,15 @@ namespace Boodle.Models
                 new { id = id });
 
             return boxCount;
+        }
+
+        public string GetListContactName(int id)
+        {
+            var contactName = _conn.QuerySingle<string>("SELECT U.FullName AS ContactName FROM Lists AS L " +
+                "INNER JOIN Users AS U ON L.ContactID = U.UsersID WHERE L.ListsID = @id",
+                new { id = id });
+
+            return contactName;
         }
 
         public int GetShippedBoxCount(int id)

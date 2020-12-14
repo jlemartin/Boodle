@@ -3,17 +3,21 @@
 <h2>Signups for this Box List</h2>
 <table class="table">
     <tr>
+        <th>ID</th>
         <th>List Name</th>
         <th>Boodler</th>
-        <th>Number of Boxes</th>
+        <th>Creation Date</th>
+        <th>Ship Date</th>
     </tr>
 
     @foreach (var signup in Model)
     {
         <tr>
+            <td><a href=/Signup/ViewSignup/@signup.SignupsID>@signup.SignupsID</a></td>
             <td>@signup.BoxListName</td>
             <td>@signup.FullName</td>
-            <td>@signup.PerBoodlerInList</td>
+            <td>@signup.Creation</td>
+            <td>@signup.ShipDate</td>
         </tr>
 
     }

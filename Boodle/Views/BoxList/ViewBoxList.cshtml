@@ -1,6 +1,6 @@
 ﻿@model BoxList
 
-<h3>@Model.Name Information</h3>
+<h4>List: @Model.Name - Contact: @Model.ContactName</h4>
 
 <table class="table">
     <tr>
@@ -25,7 +25,9 @@
 </table>
 
 <div style="display:block">
+    <h4>
     <a href="/Signup/ViewSignupsByBoxList/@Model.ListsID">See Signups for this Box List</a>
+    </h4>
 </div>
 <p></p>
 

@@ -16,7 +16,7 @@ namespace Boodle.Models
 
         public IEnumerable<Signup> GetAllSignups()
         {
-            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate, ShipState " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
                 "INNER JOIN Users AS U ON S.UsersID = U.UsersID;");
         }
@@ -34,13 +34,19 @@ namespace Boodle.Models
             return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
                 "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE U.UsersID = @id", new { id = id });
+
         }
 
         public IEnumerable<Signup> GetSignupsByList(int id)
         {
-            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+            //return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+            //    "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
+            //    "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id", new { id = id });
+
+            return _conn.Query<Signup>("SELECT DISTINCT L.Name AS BoxListName, U.FullName, COUNT(S.SignupsID) AS PerBoodlerInList " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
-                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id", new { id = id });
+                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id GROUP BY U.FullName",
+                new { id = id });
         }
 
         public void MakeBoxListSignup(int UsersID, int ListsID, string SignupDate, int quantity)
@@ -53,10 +59,10 @@ namespace Boodle.Models
             }
         }
 
-        public void UpdateShipDate(int id, string dateStamp)
+        public void UpdateShipDate(int id, string dateStamp, string shipState)
         {
-            _conn.Execute("UPDATE Signups SET ShipDate = @dateStamp WHERE SignupsID = @id;",
-                new { id = id, dateStamp = dateStamp });
+            _conn.Execute("UPDATE Signups SET ShipDate = @dateStamp, ShipState = @shipState WHERE SignupsID = @id;",
+                new { id = id, dateStamp = dateStamp, shipState = shipState });
         }
     }
 }

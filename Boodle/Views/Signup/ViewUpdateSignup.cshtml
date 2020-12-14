@@ -1,6 +1,6 @@
 ﻿@model Signup
 
-<h2>Update this box - with Ship Date</h2>
+<h2>Update this box - with Ship Date and Ship State</h2>
 <table class="table">
     <tr>
         <th>ID</th>
@@ -19,8 +19,17 @@
 @using (Html.BeginForm("UpdateShipDate", "Signup", "Post"))
 {
     <input asp-for="SignupsID" type="hidden" value="@Model.SignupsID" />
-    <label asp-for="ShipDate" class="control-label">Date Shipped</label>
+    <label asp-for="ShipDate" class="control-label">Date Shipped:</label>
     <input type="text" name="ShipDate" class="form-control" value="@DateTime.Now" />
-    <input type="submit" value="Add Date Shipped" class="btn btn-primary" />
+    <div class="form-group">
+        <label for="">Shipped from what state?</label>
+        <select class="form-control" name="ShipState" value="">
+            @foreach (var state in Model.States)
+            {
+                <option value="@state.Abbreviation">@state.Abbreviation @state.Name</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Update Shipment Info" class="btn btn-primary" />
 
 }

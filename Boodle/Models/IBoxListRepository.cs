@@ -11,6 +11,7 @@ namespace Boodle.Models
         public int GetFilledBoxCount(int id);
         public int GetShippedBoxCount(int id);
         public void UpdateListShipped(int id);
+        public string GetListContactName(int id);
 
     }
 }

@@ -47,9 +47,9 @@ namespace Boodle.Controllers
             return RedirectToAction("Index", "BoxList");
         }
 
-        public IActionResult UpdateShipDate(int SignupsID, string ShipDate)
+        public IActionResult UpdateShipDate(int SignupsID, string ShipDate, string ShipState)
         {
-            repo.UpdateShipDate(SignupsID, ShipDate);
+            repo.UpdateShipDate(SignupsID, ShipDate, ShipState);
 
             return RedirectToAction("Index", "Boodler");
         }

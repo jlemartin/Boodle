@@ -15,5 +15,6 @@
     <Folder Include="Views\BoxList\" />
     <Folder Include="Views\Boodler\" />
     <Folder Include="Views\Signup\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 </Project>
