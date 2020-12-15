@@ -1,6 +1,19 @@
-﻿@model IEnumerable<Boodler>
+﻿@{
+    ViewData["Title"] = "The Boodlers";
+}
 
-<h2>Boodlers</h2>
+@model IEnumerable<Boodler>
+
+<h3>List of Boodlers</h3>
+
+<hr width="100%" />
+
+<div style="display:block">
+    <h4>
+        <a href="/Boodler/ViewBoxListContacts">See Box List Contacts</a>
+    </h4>
+</div>
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -11,12 +24,12 @@
 
     @foreach (var boodler in Model)
     {
-    <tr>
-        <td><a href=/Boodler/ViewBoodler/@boodler.UsersID>@boodler.UsersID</a></td>
-        <td>@boodler.FullName</td>
-        <td>@boodler.EmailAddress</td>
-        <td>@boodler.CreationDate</td>
-    </tr>
+        <tr>
+            <td><a href=/Boodler/ViewBoodler/@boodler.UsersID>@boodler.UsersID</a></td>
+            <td>@boodler.FullName</td>
+            <td>@boodler.EmailAddress</td>
+            <td>@boodler.CreationDate</td>
+        </tr>
 
     }
 </table>

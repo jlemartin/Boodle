@@ -25,5 +25,11 @@ namespace Boodle.Models
                 new { id = id });
 
         }
+
+        public IEnumerable<Boodler> GetBoxListContacts()
+        {
+            return _conn.Query<Boodler>("SELECT L.ContactID AS UsersID, U.FullName, L.ListsID, L.Name AS ListName " +
+                "FROM Lists AS L INNER JOIN Users AS U ON L.ContactID = U.UsersID;");
+        }
     }
 }

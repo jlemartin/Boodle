@@ -1,6 +1,10 @@
-﻿@model Boodler
+﻿@{
+    ViewData["Title"] = "This Boodler";
+}
 
-<h2>This Boodler</h2>
+@model Boodler
+
+<h3>This Boodler</h3>
 <table class="table">
     <tr>
         <th>ID</th>
@@ -18,6 +22,8 @@
 </table>
 
 <div style="display:block">
+    <h4>
     <a href="/Signup/ViewSignupsByBoodler/@Model.UsersID">See Signups by this Boodler</a>
+    </h4>
 </div>
 <p></p>

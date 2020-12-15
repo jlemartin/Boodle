@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Box List Contacts";
+}
+
+@model IEnumerable<Boodler>
+
+<h2>Box List Contacts</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>List(s) - Click to view</th>
+    </tr>
+
+    @foreach (var boodler in Model)
+    {
+        <tr>
+            <td><a href=/Boodler/ViewBoodler/@boodler.UsersID>@boodler.UsersID</a></td>
+            <td>@boodler.FullName</td>
+            <td><a href=/BoxList/ViewBoxList/@boodler.ListsID>@boodler.ListName</a></td>
+        </tr>
+
+    }
+</table>

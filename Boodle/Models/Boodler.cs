@@ -14,6 +14,8 @@ namespace Boodle.Models
         public string FullName { get; set; }
         public string EmailAddress { get; set; }
         public string CreationDate { get; set; }
+        public string ListsID { get; set; }
+        public string ListName { get; set; }
 
     }
 }

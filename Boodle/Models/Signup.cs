@@ -21,8 +21,6 @@ namespace Boodle.Models
         public string FullName { get; set; }
         public int PerBoodlerInList { get; set; }
         public string ShipState { get; set; }
-        //public IEnumerable<String> States { get; set; }
-
         public List<(string Abbreviation, string Name)> States { get; set; }
 
 

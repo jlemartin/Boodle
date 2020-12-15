@@ -24,14 +24,17 @@
 
 </table>
 
+<hr width="100%" />
+
 <div style="display:block">
     <h4>
     <a href="/Signup/ViewSignupsByBoxList/@Model.ListsID">See Signups for this Box List</a>
     </h4>
 </div>
-<p></p>
 
-<h4>Signup for boxes on this list:</h4>
+<hr width="100%" />
+
+<h4>Sign up for boxes on this list:</h4>
 
 @using (Html.BeginForm("MakeBoxListSignup", "Signup", "Post"))
 {
@@ -57,3 +60,4 @@
     </div>
     <input type="submit" value="Signup for Boxes" class="btn btn-primary" />
 }
+

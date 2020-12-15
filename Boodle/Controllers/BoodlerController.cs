@@ -32,5 +32,13 @@ namespace Boodle.Controllers
 
             return View(boodler);
         }
+
+        // Get Box List Contacts
+        public IActionResult ViewBoxListContacts()
+        {
+            var boodlers = repo.GetBoxListContacts();
+
+            return View(boodlers);
+        }
     }
 }
