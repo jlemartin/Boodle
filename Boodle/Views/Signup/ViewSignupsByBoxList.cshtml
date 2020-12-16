@@ -1,6 +1,11 @@
-﻿@model IEnumerable<Signup>
+﻿@{
+    ViewData["Title"] = "Signups by List";
+}
 
-<h2>Signups for this Box List</h2>
+@model IEnumerable<Signup>
+
+<h3>Signups for this Box List</h3>
+
 <table class="table">
     <tr>
         <th>List Name</th>

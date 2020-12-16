@@ -1,7 +1,11 @@
-﻿@model IEnumerable<BoxList>
+﻿@{
+    ViewData["Title"] = "Box Lists";
+}
+
+@model IEnumerable<BoxList>
 
 <h3>Box Lists</h3>
-<h5>Access each list by choosing the ListsID number.</h5>
+<p>Access each list by choosing the ListsID number.</p>
 <table class="table">
     <tr>
         <th>ListsID</th>
@@ -15,15 +19,15 @@
 
     @foreach (var boxlist in Model)
     {
-    <tr>
-        <td><a href=/BoxList/ViewBoxList/@boxlist.ListsID>@boxlist.ListsID</a></td>
-        <td>@boxlist.Name</td>
-        <td>@boxlist.BoxNumber</td>
-        <td>@boxlist.BoxesFilled</td>
-        <td>@boxlist.BoxesAvailable</td>
-        <td>@boxlist.BoxesShipped</td>
-        <td>@boxlist.ShippedText</td>
-    </tr>
+        <tr>
+            <td><a href=/BoxList/ViewBoxList/@boxlist.ListsID>@boxlist.ListsID</a></td>
+            <td>@boxlist.Name</td>
+            <td>@boxlist.BoxNumber</td>
+            <td>@boxlist.BoxesFilled</td>
+            <td>@boxlist.BoxesAvailable</td>
+            <td>@boxlist.BoxesShipped</td>
+            <td>@boxlist.ShippedText</td>
+        </tr>
 
     }
 </table>

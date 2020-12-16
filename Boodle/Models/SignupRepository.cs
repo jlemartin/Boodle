@@ -31,10 +31,17 @@ namespace Boodle.Models
 
         public IEnumerable<Signup> GetSignupsByBoodler(int id)
         {
-            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.UsersID, U.FullName, Creation, ShipDate " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
                 "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE U.UsersID = @id", new { id = id });
 
+        }
+
+        public IEnumerable<Signup> GetSignupsByBoodlerNotShipped(int id)
+        {
+            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+                "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
+                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE ShipDate IS NULL AND U.UsersID = @id", new { id = id });
         }
 
         public IEnumerable<Signup> GetSignupsByList(int id)
@@ -56,6 +63,18 @@ namespace Boodle.Models
                 _conn.Execute("INSERT INTO Signups (UsersID, ListsID, Creation) " +
                     "VALUES (@UsersID, @ListsID, @dateString);",
                     new { UsersID = UsersID, ListsID = ListsID, dateString = SignupDate });
+            }
+        }
+
+        public void UpdateMultipleShipments(int usersid, string dateStamp, string shipState)
+        {
+            var repo = _conn.Query<Signup>("SELECT S.SignupsID, L.ListsID, U.UsersID " +
+                "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
+                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE ShipDate IS NULL AND U.UsersID = @id", new { id = usersid });
+
+            foreach (var signup in repo)
+            {
+                UpdateShipDate(signup.SignupsID, dateStamp, shipState);
             }
         }
 

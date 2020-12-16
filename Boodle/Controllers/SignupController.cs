@@ -54,6 +54,13 @@ namespace Boodle.Controllers
             return RedirectToAction("Index", "Boodler");
         }
 
+        public IActionResult UpdateMultipleShipments(int UsersID, string ShipDate, string ShipState)
+        {
+            repo.UpdateMultipleShipments(UsersID, ShipDate, ShipState);
+
+            return RedirectToAction("Index", "Boodler");
+        }
+
         public IActionResult ViewSignupsByBoxList(int id)
         {
             var boxListSignups = repo.GetSignupsByList(id);
@@ -64,6 +71,13 @@ namespace Boodle.Controllers
         public IActionResult ViewSignupsByBoodler(int id)
         {
             var boodlerSignups = repo.GetSignupsByBoodler(id);
+
+            return View(boodlerSignups);
+        }
+
+        public IActionResult ViewSignupsByBoodlerNotShipped(int id)
+        {
+            var boodlerSignups = repo.GetSignupsByBoodlerNotShipped(id);
 
             return View(boodlerSignups);
         }

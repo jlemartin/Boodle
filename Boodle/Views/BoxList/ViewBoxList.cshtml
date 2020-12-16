@@ -1,4 +1,8 @@
-﻿@model BoxList
+﻿@{
+    ViewData["Title"] = "View a List";
+}
+
+@model BoxList
 
 <h4>List: @Model.Name - Contact: @Model.ContactName</h4>
 
@@ -19,7 +23,7 @@
         <td>@Model.BoxesFilled</td>
         <td>@Model.BoxesAvailable</td>
         <td>@Model.BoxesShipped</td>
-        <td>@Model.ShippedText</td> 
+        <td>@Model.ShippedText</td>
     </tr>
 
 </table>
@@ -28,7 +32,7 @@
 
 <div style="display:block">
     <h4>
-    <a href="/Signup/ViewSignupsByBoxList/@Model.ListsID">See Signups for this Box List</a>
+        <a href="/Signup/ViewSignupsByBoxList/@Model.ListsID">See Signups for this Box List</a>
     </h4>
 </div>
 

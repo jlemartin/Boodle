@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Box Signups By Boodler - Not Shipped";
+}
+
+@model IEnumerable<Signup>
+
+<h3>Box Signups by Boodler that have not yet shipped</h3>
+
+<p>
+    When you have shipped each box, click the <strong>Box ID</strong> to reach the update page.
+</p>
+<table class="table">
+    <tr>
+        <th>Box ID</th>
+        <th>List Name</th>
+        <th>Boodler</th>
+        <th>Creation Date</th>
+        <th>Ship Date</th>
+    </tr>
+
+    @foreach (var signup in Model)
+    {
+        <tr>
+            <td><a href=/Signup/ViewUpdateSignup/@signup.SignupsID>@signup.SignupsID</a></td>
+            <td>@signup.BoxListName</td>
+            <td>@signup.FullName</td>
+            <td>@signup.Creation</td>
+            <td>@signup.ShipDate</td>
+        </tr>
+
+    }
+</table>
+
+<hr />
+
+<h4>
+    Update Shipment Info for all boxes that have not shipped:
+</h4>
+@using (Html.BeginForm("UpdateMultipleShipments", "Signup", "Post"))
+{
+    <input asp-for="UsersID" type="hidden" value="@Model.First().UsersID" />
+    <label asp-for="ShipDate" class="control-label">Date Shipped:</label>
+    <input type="text" name="ShipDate" class="form-control" value="@DateTime.Now" />
+    <div class="form-group">
+        <label for="">Shipped from what state?</label>
+        <select class="form-control" name="ShipState" value="">
+            @foreach (var state in Model.First().States)
+            {
+                <option value="@state.Abbreviation">@state.Abbreviation @state.Name</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Update Shipment Info" class="btn btn-primary" />
+
+}
