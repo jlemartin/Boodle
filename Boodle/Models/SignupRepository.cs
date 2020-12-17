@@ -50,9 +50,9 @@ namespace Boodle.Models
             //    "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
             //    "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id", new { id = id });
 
-            return _conn.Query<Signup>("SELECT DISTINCT L.Name AS BoxListName, U.FullName, COUNT(S.SignupsID) AS PerBoodlerInList " +
+            return _conn.Query<Signup>("SELECT DISTINCT L.Name AS BoxListName, U.FullName, U.UsersID, COUNT(S.SignupsID) AS PerBoodlerInList " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
-                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id GROUP BY U.FullName",
+                "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE L.ListsID = @id GROUP BY U.FullName, U.UsersID",
                 new { id = id });
         }
 

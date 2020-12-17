@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Signups by List";
+    ViewData["Title"] = "Signups by Box List";
 }
 
 @model IEnumerable<Signup>
@@ -15,11 +15,11 @@
 
     @foreach (var signup in Model)
     {
-        <tr>
-            <td>@signup.BoxListName</td>
-            <td>@signup.FullName</td>
-            <td>@signup.PerBoodlerInList</td>
-        </tr>
+<tr>
+    <td>@signup.BoxListName</td>
+    <td><a href=/Boodler/ViewBoodler/@signup.UsersID>@signup.FullName</a></td>
+    <td>@signup.PerBoodlerInList</td>
+</tr>
 
     }
 </table>
