@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Box Signups By Boodler Grouped By List";
+}
+
+@model IEnumerable<Signup>
+
+<h3>Box Signups by Boodler - Summary by List</h3>
+
+<table class="table">
+    <tr>
+        <th>List Name</th>
+        <th>Number of Boxes</th>
+    </tr>
+
+    @foreach (var signup in Model)
+    {
+        <tr>
+            <td><a href="/BoxList/ViewBoxList/@signup.ListsID">@signup.BoxListName</a></td>
+            <td>@signup.PerBoodlerInList</td>
+        </tr>
+
+    }
+</table>
+

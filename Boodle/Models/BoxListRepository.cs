@@ -21,6 +21,9 @@ namespace Boodle.Models
 
         public IEnumerable<BoxList> GetAllLists()
         {
+            var yesText = "BOOM!!!";
+            var notShipText = "Not yet";
+
             var boxLists = _conn.Query<BoxList>("SELECT * FROM Lists;");
 
             foreach (var list in boxLists)
@@ -37,11 +40,11 @@ namespace Boodle.Models
 
                 if (list.Shipped == 1)
                 {
-                    list.ShippedText = "BOOM!";
+                    list.ShippedText = yesText;
                 }
                 else
                 {
-                    list.ShippedText = "Not yet";
+                    list.ShippedText = notShipText;
                 }
             }
 
@@ -50,6 +53,9 @@ namespace Boodle.Models
 
         public BoxList GetBoxList(int id)
         {
+            var yesText = "BOOM!!!";
+            var notShipText = "Not yet";
+
             var aBoxList = _conn.QuerySingle<BoxList>("SELECT * FROM Lists WHERE ListsID = @id",
                 new { id = id });
 
@@ -69,11 +75,11 @@ namespace Boodle.Models
 
             if (aBoxList.Shipped == 1)
             {
-                aBoxList.ShippedText = "BOOM!";
+                aBoxList.ShippedText = yesText;
             }
             else
             {
-                aBoxList.ShippedText = "Not yet";
+                aBoxList.ShippedText = notShipText;
             }
 
             aBoxList.ContactName = GetListContactName(id);

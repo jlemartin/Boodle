@@ -81,5 +81,12 @@ namespace Boodle.Controllers
 
             return View(boodlerSignups);
         }
+
+        public IActionResult ViewSignupsByBoodlerGrouped(int id)
+        {
+            var boodlerSignups = repo.GetSignupsByBoodlerGrouped(id);
+
+            return View(boodlerSignups);
+        }
     }
 }
