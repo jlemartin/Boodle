@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Boodle.Models
 {
     public class Boodler
     {
         public Boodler()
         {
+            States = StateArray.States;
         }
 
         public int UsersID { get; set; }
@@ -16,6 +19,8 @@ namespace Boodle.Models
         public string CreationDate { get; set; }
         public string ListsID { get; set; }
         public string ListName { get; set; }
+        public string ShipDate { get; set; }
+        public List<(string Abbreviation, string Name)> States { get; set; }
 
     }
 }

@@ -40,5 +40,12 @@ namespace Boodle.Controllers
 
             return View(boodlers);
         }
+
+        public IActionResult ViewUpdateMultipleShipments(int id)
+        {
+            var boodler = repo.GetBoodler(id);
+
+            return View(boodler);
+        }
     }
 }

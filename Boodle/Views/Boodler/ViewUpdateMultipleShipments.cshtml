@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Update Multiple Shipments by Boodler";
+}
+
+@model Boodler
+
+<h3>Update All Boxes that have not shipped by this Boodler</h3>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email Address</th>
+        <th>Account Created</th>
+    </tr>
+
+    <tr>
+        <td>@Model.UsersID</td>
+        <td>@Model.FullName</td>
+        <td>@Model.EmailAddress</td>
+        <td>@Model.CreationDate</td>
+    </tr>
+</table>
+
+<hr />
+
+<h4>
+    Update Shipment Info for all boxes that have not shipped:
+</h4>
+@using (Html.BeginForm("UpdateMultipleShipments", "Signup", "Post"))
+{
+    <input asp-for="UsersID" type="hidden" value="@Model.UsersID" />
+    <label asp-for="ShipDate" class="control-label">Date Shipped:</label>
+    <input type="text" name="ShipDate" class="form-control" value="@DateTime.Now" />
+    <div class="form-group">
+        <label for="">Shipped from what state?</label>
+        <select class="form-control" name="ShipState" value="">
+            @foreach (var state in Model.States)
+            {
+                <option value="@state.Abbreviation">@state.Abbreviation @state.Name</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Update Shipment Info" class="btn btn-primary" />
+
+}

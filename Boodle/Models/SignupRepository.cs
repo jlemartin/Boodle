@@ -39,7 +39,7 @@ namespace Boodle.Models
 
         public IEnumerable<Signup> GetSignupsByBoodlerNotShipped(int id)
         {
-            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName, Creation, ShipDate " +
+            return _conn.Query<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.UsersID, U.FullName, Creation, ShipDate " +
                 "FROM Lists AS L INNER JOIN Signups AS S ON L.ListsID = S.ListsID " +
                 "INNER JOIN Users AS U ON S.UsersID = U.UsersID WHERE ShipDate IS NULL AND U.UsersID = @id", new { id = id });
         }
