@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Shipment Count By State";
+}
+
+@model IEnumerable<Signup>
+
+<h3>Shipments by State</h3>
+
+<table class="table">
+    <tr>
+        <th>State</th>
+        <th>Boxes Shipped</th>
+    </tr>
+
+    @foreach (var state in Model)
+    {
+        <tr>
+            <td>@state.ShipState</td>
+            <td>@state.ShipStateCount</td>
+        </tr>
+
+    }
+</table>

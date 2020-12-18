@@ -17,5 +17,6 @@
     <Folder Include="Views\Signup\" />
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Views\TheNumbers\" />
+    <Folder Include="wwwroot\Documents\" />
   </ItemGroup>
 </Project>

@@ -21,6 +21,12 @@ namespace Boodle.Models
                 "INNER JOIN Users AS U ON S.UsersID = U.UsersID;");
         }
 
+        public IEnumerable<Signup> GetShipStateCounts()
+        {
+            return _conn.Query<Signup>("SELECT DISTINCT ShipState, COUNT(SignupsID) AS ShipStateCount FROM Signups " +
+                "WHERE NOT ShipState IS NULL GROUP BY ShipState ORDER BY ShipState;");
+        }
+
         public Signup GetSignup(int id)
         {
             return _conn.QuerySingle<Signup>("SELECT S.SignupsID, L.Name AS BoxListName, U.FullName " +

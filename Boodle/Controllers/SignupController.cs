@@ -88,5 +88,12 @@ namespace Boodle.Controllers
 
             return View(boodlerSignups);
         }
+
+        public IActionResult ViewShipStateCounts()
+        {
+            var shipCounts = repo.GetShipStateCounts();
+
+            return View(shipCounts);
+        }
     }
 }

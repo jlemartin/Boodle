@@ -13,6 +13,7 @@ namespace Boodle.Models
         public void UpdateShipDate(int id, string dateStamp, string shipState);
         public void UpdateMultipleShipments(int usersid, string dateStamp, string shipState);
         public IEnumerable<Signup> GetSignupsByBoodlerNotShipped(int id);
+        public IEnumerable<Signup> GetShipStateCounts();
 
     }
 }
