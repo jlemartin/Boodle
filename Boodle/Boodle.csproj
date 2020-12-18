@@ -18,5 +18,6 @@
     <Folder Include="wwwroot\Images\" />
     <Folder Include="Views\TheNumbers\" />
     <Folder Include="wwwroot\Documents\" />
+    <Folder Include="Views\Doc\" />
   </ItemGroup>
 </Project>

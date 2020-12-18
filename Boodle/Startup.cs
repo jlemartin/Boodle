@@ -41,6 +41,8 @@ namespace Boodle
 
             services.AddTransient<ITheNumbersRepository, TheNumbersRepository>();
 
+            services.AddTransient<IDocRepository, DocRepository>();
+
             services.AddControllersWithViews();
         }
 

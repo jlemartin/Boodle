@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Documents";
+}
+
+@model IEnumerable<Doc>
+
+<h4>Documents and Labels</h4>
+<table class="table">
+    <tr>
+        <th>Click to open in a new window:</th>
+
+    </tr>
+
+    @foreach (var doc in Model)
+    {
+        <tr>
+            <td><a href="@doc.DocLocation" target="_blank">@doc.DocName</a></td>
+        </tr>
+
+    }
+</table>
+
