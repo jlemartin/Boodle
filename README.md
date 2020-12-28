@@ -1,0 +1,2 @@
+# Boodle
+This full stack development project automated the activities of an organization whose members could view, sign up for, and report the shipment of sending ‘boodle’ boxes to deployed members of the Armed Forces for Christmas. As an ASP.NET MVC example, the back end was a MySQL database which stored the records of the lists of needed boxes, the users, and the record of the signups for sending. The instructions were addressed with C# for web browser access with the use of the Dapper ORM for database connectivity.
